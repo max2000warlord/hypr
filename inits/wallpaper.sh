@@ -1,23 +1,25 @@
 #!/bin/sh
 
+CACHE_FILE="$HOME/.cache/swww/eDP-1"
+LINK_PATH="$HOME/.cache/swww/current"
+
 # Get the initial wallpaper
-LAST_WALLPAPER=$(swww query | awk -F 'image: ' '{print $2}')
+LAST_WALLPAPER=$(strings "$CACHE_FILE" | grep '^/')
+ln -sf "$LAST_WALLPAPER" "$LINK_PATH"
 
 while true; do
-  # Get the current wallpaper
-  CURRENT_WALLPAPER=$(swww query | awk -F 'image: ' '{print $2}')
+  CURRENT_WALLPAPER=$(strings "$CACHE_FILE" | grep '^/')
 
-  # Check if the wallpaper has changed
   if [ "$CURRENT_WALLPAPER" != "$LAST_WALLPAPER" ]; then
     LAST_WALLPAPER="$CURRENT_WALLPAPER"
+    ln -sf "$CURRENT_WALLPAPER" "$LINK_PATH"
 
     # Apply pywal colors
     wal -i "$CURRENT_WALLPAPER"
 
-    # Reload Waybar
-    #pkill -SIGUSR2 waybar
+    # Optional: reload Waybar
+    # pkill -SIGUSR2 waybar
   fi
 
-  # Sleep for a short duration to avoid excessive CPU usage
   sleep 2
 done
