@@ -20,7 +20,7 @@ while true; do
 
     # Update symlink and apply colors
     ln -sf "$CURRENT_WALLPAPER" "$LINK_PATH"
-    wal -i "$CURRENT_WALLPAPER"
+    wallust run -s "$CURRENT_WALLPAPER"
 
     # Optional: reload Waybar
     # pkill -SIGUSR2 waybar
