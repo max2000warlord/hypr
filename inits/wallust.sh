@@ -3,12 +3,10 @@
 CACHE_FILE="$HOME/.cache/swww/eDP-1"
 LINK_PATH="$HOME/.cache/swww/current"
 
-# Function to extract wallpaper path safely
 get_wallpaper() {
   tr -d '\000' <"$CACHE_FILE" | grep -o '/home/[^[:space:]]*\.\(jpg\|jpeg\|png\|webp\)$'
 }
 
-# Get the initial wallpaper
 LAST_WALLPAPER=$(get_wallpaper)
 ln -sf "$LAST_WALLPAPER" "$LINK_PATH"
 
@@ -22,8 +20,6 @@ while true; do
     ln -sf "$CURRENT_WALLPAPER" "$LINK_PATH"
     wallust run -s "$CURRENT_WALLPAPER"
 
-    # Optional: reload Waybar
-    # pkill -SIGUSR2 waybar
   fi
 
   sleep 2
