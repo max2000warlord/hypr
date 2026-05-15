@@ -1,7 +1,7 @@
 #!/bin/sh
 
-CACHE_FILE="$HOME/.cache/swww/eDP-1"
-LINK_PATH="$HOME/.cache/swww/current"
+CACHE_FILE="$HOME/.cache/awww/0.12.0/eDP-1"
+LINK_PATH="$HOME/.cache/awww/0.12.0/current"
 
 get_wallpaper() {
   tr -d '\000' <"$CACHE_FILE" | grep -o '/home/[^[:space:]]*\.\(jpg\|jpeg\|png\|webp\)$'
