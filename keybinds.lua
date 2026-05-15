@@ -55,6 +55,12 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
+-- Swap tiles
+hl.bind(comboMod .. " + left", hl.dsp.window.move({ direction = "left" }))
+hl.bind(comboMod .. " + right", hl.dsp.window.move({ direction = "right" }))
+hl.bind(comboMod .. " + up", hl.dsp.window.move({ direction = "up" }))
+hl.bind(comboMod .. " + down", hl.dsp.window.move({ direction = "down" }))
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
