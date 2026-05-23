@@ -107,7 +107,16 @@ for _, nb in ipairs(noborders) do
 	})
 end
 
-local lr = { "ghostty", "glava", "neovide", "waybar", "rofi", "hyprlauncher" }
+local noshadows = { "waybar", "com.mitchellh.ghostty", "neovide" }
+
+for _, nsh in ipairs(noshadows) do
+	hl.window_rule({
+		match = { class = nsh },
+		no_shadow = true,
+	})
+end
+
+local lr = { "waybar" }
 
 for _, ns in ipairs(lr) do
 	hl.layer_rule({

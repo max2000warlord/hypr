@@ -1,5 +1,6 @@
 require("autostart")
 require("keybinds")
+require("plugins")
 require("rules")
 local colors = require("colors")
 -- require()
@@ -27,7 +28,10 @@ hl.env("HXYPRCURSOR_THEME", "Sweet-cursors-hyprcursor")
 hl.env("HXYPRCURSOR_SIZE", "30")
 hl.env("HXYPRSHOT_DIR", "$HOME/Pictures/Screenshots")
 hl.env("GXDK_BACKEND", "wayland")
+hl.env("GXDK_BACKEND", "x11")
+hl.env("GXDK_BACKEND", "*")
 hl.env("QXT_QPA_PLATFORM", "wayland")
+hl.env("QXT_QPA_PLATFORM", "xcb")
 hl.env("QXT_QPA_PLATFORMTHEME", "qt6ct")
 
 -----------------------
@@ -37,12 +41,6 @@ hl.env("QXT_QPA_PLATFORMTHEME", "qt6ct")
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
 -- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
 -- for security reasons
-
-hl.config({
-	ecosystem = {
-		enforce_permissions = true,
-	},
-})
 
 hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 hl.permission("/usr/lib/xdg-desktop-portal-hyprland", "screencopy", "allow")
@@ -54,30 +52,12 @@ hl.permission("/usr/bin/hyprpm", "plugin", "allow")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
-	general = {
-		gaps_in = 5,
-		gaps_out = 10,
-
-		border_size = 3,
-
-		col = {
-			active_border = { colors = { colors.color12, colors.color11 }, angle = 45 },
-			inactive_border = colors.color1,
-		},
-
-		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-		resize_on_border = false,
-
-		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-		allow_tearing = false,
-
-		layout = "dwindle",
+	animations = {
+		enabled = true,
 	},
-
 	decoration = {
 		rounding = 15,
 		rounding_power = 2,
-
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1.0,
 		inactive_opacity = 1.0,
@@ -98,15 +78,40 @@ hl.config({
 			new_optimizations = true,
 		},
 	},
-
-	animations = {
-		enabled = true,
+	dwindle = {
+		preserve_split = true, -- You probably want this
+	},
+	ecosystem = {
+		enforce_permissions = true,
+	},
+	general = {
+		gaps_in = 5,
+		gaps_out = 10,
+		border_size = 3,
+		col = {
+			active_border = { colors = { colors.color12, colors.color11 }, angle = 45 },
+			inactive_border = colors.color1,
+		},
+		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
+		resize_on_border = false,
+		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
+		allow_tearing = false,
+		layout = "dwindle",
+	},
+	master = {
+		new_status = "master",
+	},
+	misc = {
+		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
+		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
+	},
+	scrolling = {
+		fullscreen_on_one_column = true,
+	},
+	xwayland = {
+		force_zero_scaling = true,
 	},
 })
-
-xwayland = {
-	force_zero_scaling = true,
-}
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
@@ -155,36 +160,19 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 -- })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
-hl.config({
-	dwindle = {
-		preserve_split = true, -- You probably want this
-	},
-})
+hl.config({})
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
-hl.config({
-	master = {
-		new_status = "master",
-	},
-})
+hl.config({})
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
-hl.config({
-	scrolling = {
-		fullscreen_on_one_column = true,
-	},
-})
+hl.config({})
 
 ----------------
 ----  MISC  ----
 ----------------
 
-hl.config({
-	misc = {
-		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
-	},
-})
+hl.config({})
 
 ---------------
 ---- INPUT ----
