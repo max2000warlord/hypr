@@ -8,6 +8,7 @@ local browser = "zen-browser"
 local fileManager = "thunar"
 local menu = "rofi -show drun"
 local code = "neovide"
+local lock = "hyprlock"
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -29,6 +30,7 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(comboMod .. " + F", hl.dsp.exec_cmd(fileManager))
+hl.bind(comboMod .. " + L", hl.dsp.exec_cmd(lock))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
