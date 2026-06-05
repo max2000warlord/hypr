@@ -116,7 +116,7 @@ for _, nsh in ipairs(noshadows) do
 	})
 end
 
-local lr = { "waybar" }
+local lr = { "waybar", "rofi" }
 
 for _, ns in ipairs(lr) do
 	hl.layer_rule({
